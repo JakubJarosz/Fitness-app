@@ -10,7 +10,7 @@ function RegisterForm() {
     email: "",
     password: "",
   })
-   console.log(formData)
+
   const registerUser = async (e) => {
      e.preventDefault();
      const {name, email, password} = formData;

@@ -1,14 +1,16 @@
 import React, {useEffect} from 'react';
-import axios from "axios";
 import LogOutButton from '../components/LogOutButton';
+import { fetchUser } from '../redux/auth';
+import {useDispatch} from "react-redux"
 
 
 function Home() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    axios.get("/profile").then(({data}) => {
-      console.log(data)
-    })
-  })
+    dispatch(fetchUser())
+  }, [])
+
   return (
     <div>
       <h1>HOME PAGE</h1>

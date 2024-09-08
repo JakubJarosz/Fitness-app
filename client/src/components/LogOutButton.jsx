@@ -1,12 +1,15 @@
 import React from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
+import { logoutUser } from '../redux/auth';
+import {useDispatch} from "react-redux"
 
 function LogOutButton() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const logOutBtn =  () => {
-         axios.post("/logout");
+         dispatch(logoutUser())
         navigate("/register")
         toast.success("Logout was succesfull")
     }
