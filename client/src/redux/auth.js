@@ -3,7 +3,7 @@ import axios from "axios"
 
 
 const initialState = {
-  user: null, 
+  user: [], 
   isAuthenticated: false, 
   loading: false,
   error: null,
@@ -37,12 +37,12 @@ const authSlice = createSlice({
         })
         builder.addCase(logoutUser.pending, state => {
             state.loading = true
-            state.user = null
+            state.user = []
             state.isAuthenticated = false;
         })
         builder.addCase(logoutUser.fulfilled, state => {
             state.loading = false;
-            state.user = null
+            state.user = []
             state.isAuthenticated = false;
         })
         builder.addCase(logoutUser.rejected, (state, action) => {
