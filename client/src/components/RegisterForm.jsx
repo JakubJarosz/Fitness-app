@@ -1,14 +1,31 @@
 import React, {useState} from 'react'
+import axios from "axios"
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 function RegisterForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   })
-
-  const registerUser = (e) => {
-     e.preventDefault()
+   console.log(formData)
+  const registerUser = async (e) => {
+     e.preventDefault();
+     const {name, email, password} = formData;
+     try {
+      const {data} = await axios.post("/register" , { name, email, password})
+       if(data.error) {
+        toast.error(data.error)
+       } else {
+        setFormData({});
+        toast.success("Register succesful. Welcome!");
+        navigate("/login")
+       }
+     } catch (err) {
+       console.log(err)
+     }
   }
 
   return (
