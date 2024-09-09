@@ -5,6 +5,7 @@ import axios from "axios"
 const initialState = {
   user: [], 
   isAuthenticated: false, 
+  hasParams: false,
   loading: false,
   error: null,
 }
@@ -13,6 +14,7 @@ const initialState = {
 export const fetchUser = createAsyncThunk("authuser/fetchUser", async () => {
     const response = await axios.get("/profile");
     return response.data
+
 })
 
 export const logoutUser = createAsyncThunk("authuser/logoutUser", async () => {
@@ -29,7 +31,8 @@ const authSlice = createSlice({
         })
         builder.addCase(fetchUser.fulfilled, (state, action) => {
             state.loading = false;
-            state.user = action.payload
+            state.user = action.payload.data;
+            state.hasParams = action.payload.success
             state.isAuthenticated = true;
         })
         builder.addCase(fetchUser.rejected, (state, action) => {
@@ -50,5 +53,7 @@ const authSlice = createSlice({
         })
     }
 })
+
+
 
 export default authSlice.reducer

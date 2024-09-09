@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const {User, Params} = require("../models/user");
 const {hashPassword, comparePassword} = require("../helpers/bcryptAuth");
 const jwt = require("jsonwebtoken");
 
@@ -75,9 +75,22 @@ const loginUser = async(req, res) => {
 const getProfile = (req, res) => {
    const {token} =   req.cookies
    if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
+    jwt.verify(token, process.env.JWT_SECRET, {}, async (err, user) => {
         if (err) throw err;
-        res.json(user)
+        // CHeck if userParams exist
+        const params = await Params.findOne({ _id: user.id});
+        if (params) {
+            res.json({
+                success: true,
+                data: user,
+            });
+        } else {
+            res.json({
+                success: false,
+                data: user,
+            });
+        }
+       
     })
    } else {
     res.json(null)

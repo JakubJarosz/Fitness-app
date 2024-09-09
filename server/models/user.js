@@ -7,10 +7,21 @@ const userSchema = new Schema({
         type: String,
         unique: true
     },
-    password: String
+    password: String,
+})
+
+const userParamsSchema = new Schema({
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: "User", require: true},
+    age: {type: Number},
+    gender: {type: String},
+    goal: {type: String},
+    height: {type: Number},
+    weight: {type: Number}
 })
 
 
-const userModel = mongoose.model("User", userSchema)
+const User = mongoose.model("User", userSchema);
+const Params = mongoose.model("Params", userParamsSchema)
 
-module.exports = userModel
+
+module.exports = {User, Params}
