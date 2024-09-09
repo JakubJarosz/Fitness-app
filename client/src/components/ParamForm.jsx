@@ -25,7 +25,11 @@ function ParamForm() {
     setFormData({...formData, userId: id});
     console.log(formData)
   }
+  
 
+  const handleRadio = (e) => {
+    setFormData({...formData, gender: e.target.value})
+  }
   
   return (
     <div>
@@ -33,9 +37,9 @@ function ParamForm() {
         <label>Age:</label>
         <input type="number"   min="1" max="100" value={formData.age} onChange={(e)=> setFormData({...formData, age: e.target.value})}/><br></br>
         <label>Gender:</label>
-    <input type="radio" />
+    <input type="radio" name="gender" value="male" onChange={handleRadio}/>
     <label>Male</label>
-    <input type="radio"/>
+    <input type="radio" name="gender" value="female" onChange={handleRadio}/>
     <label>Female</label><br></br>
         <label>What is your goal?</label>
         <select name="goal" value={formData.goal} onChange={(e)=> setFormData({...formData, goal: e.target.value})}>
