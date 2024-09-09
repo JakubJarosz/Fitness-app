@@ -24,8 +24,11 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchUser());
-    directPage();
   }, [])
+
+  useEffect(() => {
+    directPage();
+  }, [hasParams])
 
   return (
     <div>
