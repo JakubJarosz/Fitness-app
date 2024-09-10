@@ -72,20 +72,12 @@ const loginUser = async(req, res) => {
    } catch (error){
         console.log(error)
    }
+
 }
 
-const getProfile = (req, res) => {
-   const {token} =   req.cookies
-   if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, async (err, user) => {
-        if (err) throw err;
-      return  res.json(user)
-       
-    })
-   } else {
-    res.json(null)
-   }
-   
+
+const getProfile =  (req, res) => {
+    return res.json(req.user)
 }
 
 const logOut = (req, res) => {

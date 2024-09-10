@@ -3,6 +3,7 @@ import axios from "axios"
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
+
 function LoginForm() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ function LoginForm() {
    toast.error(data.error)
     } else {
       setFormData({});
-      toast.success("Login succesful. Welcome!")
+      toast.success("Login succesful. Welcome!");
       navigate("/")
     }
     } catch (error){
