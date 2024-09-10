@@ -1,3 +1,5 @@
+
+const mongoose = require("mongoose");
 const {User, Params} = require("../models/user");
 const {hashPassword, comparePassword} = require("../helpers/bcryptAuth");
 const jwt = require("jsonwebtoken");
@@ -77,19 +79,7 @@ const getProfile = (req, res) => {
    if (token) {
     jwt.verify(token, process.env.JWT_SECRET, {}, async (err, user) => {
         if (err) throw err;
-        // CHeck if userParams exist
-        const params = await Params.findOne({ _id: user.id});
-        if (params) {
-            res.json({
-                success: true,
-                data: user,
-            });
-        } else {
-            res.json({
-                success: false,
-                data: user,
-            });
-        }
+      return  res.json(user)
        
     })
    } else {

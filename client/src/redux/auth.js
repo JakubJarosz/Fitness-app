@@ -2,10 +2,10 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import axios from "axios"
 
 
+
 const initialState = {
   user: [], 
   isAuthenticated: false, 
-  hasParams: false,
   loading: false,
   error: null,
 }
@@ -31,8 +31,7 @@ const authSlice = createSlice({
         })
         builder.addCase(fetchUser.fulfilled, (state, action) => {
             state.loading = false;
-            state.user = action.payload.data;
-            state.hasParams = action.payload.success
+            state.user = action.payload;
             state.isAuthenticated = true;
         })
         builder.addCase(fetchUser.rejected, (state, action) => {

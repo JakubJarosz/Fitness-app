@@ -1,55 +1,30 @@
-import React, {useState, useEffect} from 'react'
-import {useSelector, useDispatch} from "react-redux";
-import { fetchUser } from '../redux/auth';
+import React from 'react'
 
 
 
 function ParamForm() {
-  const dispatch = useDispatch();
-  const id = useSelector((state) => state.authuser.user.id);
-  
-  useEffect(() => {
-   dispatch(fetchUser())
-  }, [])
-  const [formData, setFormData] = useState({
-    userId: '',
-    age: "",
-    gender: "",
-    goal: "",
-    height: "",
-    weight: ""
-  })
-
-  const handleForm =  (e) => {
-    e.preventDefault();
-    setFormData({...formData, userId: id});
-  }
-  
-
-  const handleRadio = (e) => {
-    setFormData({...formData, gender: e.target.value})
-  }
+ 
   
   return (
     <div>
-      <form onSubmit={handleForm}>
+      <form>
         <label>Age:</label>
-        <input type="number"   min="1" max="100" value={formData.age} onChange={(e)=> setFormData({...formData, age: e.target.value})}/><br></br>
+        <input type="number"   min="1" max="100"  required/><br></br>
         <label>Gender:</label>
-    <input type="radio" name="gender" value="male" onChange={handleRadio}/>
+    <input type="radio" name="gender" value="male"  required/>
     <label>Male</label>
-    <input type="radio" name="gender" value="female" onChange={handleRadio}/>
+    <input type="radio" name="gender" value="female" />
     <label>Female</label><br></br>
         <label>What is your goal?</label>
-        <select name="goal" value={formData.goal} onChange={(e)=> setFormData({...formData, goal: e.target.value})}>
+        <select name="goal"  required>
             <option value="lose">Lose weight</option>
             <option value="gain">Gain weight</option>
             <option value="maintain">Maintain weight</option>
         </select><br></br>
         <label>Height in cm:</label>
-        <input type="number" value={formData.height} onChange={(e)=> setFormData({...formData, height: e.target.value})}/>
+        <input type="number"  required/>
         <label>Weight in kg:</label>
-        <input type="number" value={formData.weight} onChange={(e)=> setFormData({...formData, weight: e.target.value})}/><br></br>
+        <input type="number"  required/><br></br>
         <button>Submit</button>
       </form>
     </div>
