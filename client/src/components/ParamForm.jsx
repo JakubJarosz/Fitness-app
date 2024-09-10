@@ -23,7 +23,6 @@ function ParamForm() {
   const handleForm =  (e) => {
     e.preventDefault();
     setFormData({...formData, userId: id});
-    console.log(formData)
   }
   
 
