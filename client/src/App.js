@@ -12,7 +12,7 @@ import {useDispatch, useSelector} from "react-redux"
 import { fetchUser } from './redux/auth';
 import RouteListener from './hooks/RouteListener';
 import UserParameters from "./pages/UserParameters"
-
+import CreateExercises from './pages/CreateExercises';
 
 
 
@@ -35,6 +35,7 @@ function App() {
       <Route path='/register' element={<Register/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/parameters' element={<UserParameters/>}/>
+      <Route path='/create-plan' element={<CreateExercises/>}/>
      </Routes>
     </div>
   );
