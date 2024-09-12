@@ -33,7 +33,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/logout", logOut);
 router.get("/profile", routAuth, getProfile);
-router.post("/create-parameters", createParameters)
+router.post("/create-parameters",routAuth, createParameters)
 
 
 module.exports = router

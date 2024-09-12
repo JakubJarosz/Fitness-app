@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 function LoginForm() {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -21,7 +22,7 @@ function LoginForm() {
     } else {
       setFormData({});
       toast.success("Login succesful. Welcome!");
-      navigate("/")
+       navigate("/")
     }
     } catch (error){
     console.log(error)

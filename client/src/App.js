@@ -11,6 +11,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import { fetchUser } from './redux/auth';
 import RouteListener from './hooks/RouteListener';
+import UserParameters from "./pages/UserParameters"
 
 
 
@@ -33,6 +34,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/login' element={<Login/>}/>
+      <Route path='/parameters' element={<UserParameters/>}/>
      </Routes>
     </div>
   );
