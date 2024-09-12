@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const cors = require("cors");
-const {test, registerUser, loginUser, getProfile, logOut} = require("../controllers/authControlles")
+const {test, registerUser, loginUser, getProfile, logOut, createParameters} = require("../controllers/authControlles")
 const jwt = require("jsonwebtoken");
 
 // middleware
@@ -32,7 +32,8 @@ router.get("/", test);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/logout", logOut);
-router.get("/profile",routAuth, getProfile);
+router.get("/profile", routAuth, getProfile);
+router.post("/create-parameters", createParameters)
 
 
 module.exports = router

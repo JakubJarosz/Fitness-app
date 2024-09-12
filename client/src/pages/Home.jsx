@@ -5,8 +5,7 @@ import Navbar from '../components/Navbar';
 
 
 function Home() {
-  const name = useSelector((state) => state.authuser.user.user);
-
+  const name = useSelector((state) => state.authuser.user.name);
 
   return (
     <div>

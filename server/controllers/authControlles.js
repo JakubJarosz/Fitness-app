@@ -75,11 +75,33 @@ const loginUser = async(req, res) => {
 
 }
 
-
-const getProfile =  (req, res) => {
-    return res.json(req.user)
+const getProfile =  async (req, res) => {
+     const user =  await User.findById(req.user.id)
+    return res.json(user)
 }
 
+const createParameters = async (req,res) => {
+    const {age, gender, goal, height, weight} = req.body
+    const userUpdate = await User.findByIdAndUpdate(req.user.id,
+        {
+            parameters: {
+               age: age,
+               gender: gender,
+               goal: goal,
+               height: height,
+               weight: weight
+            }
+        }
+    );
+     if(userUpdate) {
+        return res.json(userUpdate)
+     } else {
+        return res.json({
+            error: "Error updating user body"
+        })
+     }
+
+}
 const logOut = (req, res) => {
     res.clearCookie("token");
     res.json({
@@ -92,5 +114,6 @@ module.exports = {
     registerUser,
     loginUser,
     getProfile,
-    logOut
+    logOut,
+    createParameters
 }

@@ -14,7 +14,7 @@ const initialState = {
 export const fetchUser = createAsyncThunk("authuser/fetchUser", async () => {
     const response = await axios.get("/profile");
     return response.data
-
+     
 })
 
 export const logoutUser = createAsyncThunk("authuser/logoutUser", async () => {

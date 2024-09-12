@@ -9,6 +9,28 @@ const userSchema = new Schema({
         required: [true, 'Email is required']
     },
     password: String,
+    parameters: {
+        age: {
+            type: Number,
+            required: false
+        },
+        gender: {
+            type: String,
+            required: false
+        },
+        goal: {
+            type: String,
+            required: false,
+        },
+        height: {
+            type: Number,
+            required: false
+        },
+        weight: {
+            type: Number,
+            required: false
+        }
+    }
 })
 
 
