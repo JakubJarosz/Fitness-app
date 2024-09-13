@@ -32,7 +32,10 @@ const getExerices = async (req, res) => {
   const {muscle} = req.query
   try {
    const response = await axios.get("https://api.api-ninjas.com/v1/exercises" , {
-    params: {muscle}
+    params: {muscle},
+    headers: {
+        'X-Api-Key': process.env.API_EXERCISE
+      },
    })
    res.json(response.data)
   } catch (err) {
