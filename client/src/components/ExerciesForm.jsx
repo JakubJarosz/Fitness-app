@@ -57,7 +57,14 @@ function ExerciesForm() {
   // filter days that have tasks
   const daysWithTasks = Object.entries(tasks).filter(([day, tasksArray]) => tasksArray.length > 0);
  
- console.log(tasks)
+ // fetch create exercices from backend and add to database
+ const postExercise = async() => {
+  try {
+    await axios.post("/create-exercies", {tasks})
+  } catch (err) {
+     console.log(err)
+  }
+ }
   return (
     <div>
       <div>
@@ -105,17 +112,20 @@ function ExerciesForm() {
            </select>
            <button onClick={addExerciseBtn}>Add exercise</button>
        </div> : null}
+       <div>
+       <h2>Exercise list</h2>
         {daysWithTasks.map(([day,taskArray]) => (
-          <div>
-          <h2>Exercise list</h2>
+          <>
           <h3>{day}</h3>
           <ul>
           {taskArray.map((el) => (
             <li key={uuidv4()}>{el.name}<br></br>{el.instruction}</li>
           ))}
           </ul>
-          </div>
+          </>
         ))}
+        <button onClick={postExercise}>create plan</button>
+        </div>
     </div>
   )
 }

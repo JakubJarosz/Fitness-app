@@ -1,6 +1,13 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose
 
+
+
+const tasksItemSchema = new Schema({
+    name: String,
+    instruction: String
+}, {_id: false});
+
 const userSchema = new Schema({
     name: String,
     email: {
@@ -30,6 +37,15 @@ const userSchema = new Schema({
             type: Number,
             required: false
         }
+    },
+    exercies: {
+        monday: [tasksItemSchema],
+        tuesday: [tasksItemSchema],
+        wednesday: [tasksItemSchema],
+        thursday: [tasksItemSchema],
+        friday: [tasksItemSchema],
+        saturday: [tasksItemSchema],
+        sunday: [tasksItemSchema],
     }
 })
 
