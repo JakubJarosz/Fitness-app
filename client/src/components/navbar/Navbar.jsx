@@ -4,7 +4,6 @@ import LogOutButton from "../log-out-btn/LogOutButton"
 
 function Navbar() {
   return (
-   
       <nav>
           <ul>
           <li>
