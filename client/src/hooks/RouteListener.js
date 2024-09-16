@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchUser } from '../redux/auth';
+import { fetchUser } from '../redux/authSlice';
 
 const RouteListener = () => {
     const location = useLocation();

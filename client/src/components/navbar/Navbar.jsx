@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import LogOutButton from "../components/LogOutButton"
+import LogOutButton from "../log-out-btn/LogOutButton"
 
 function Navbar() {
   return (

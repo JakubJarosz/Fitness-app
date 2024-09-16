@@ -1,6 +1,6 @@
 import React from 'react'
 import toast from 'react-hot-toast';
-import { logoutUser } from '../redux/auth';
+import { logoutUser } from '../../redux/authSlice';
 import {useDispatch} from "react-redux"
 
 function LogOutButton() {

@@ -1,33 +1,8 @@
 import React, {useState} from 'react'
-import axios from 'axios'
-import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
 
-function ParamForm() {
-  const navigate = useNavigate();
- const [formData, setFormData] = useState({
-  age: "",
-  gender: "",
-  goal: "",
-  height: "",
-  weight: ""
- })
-  const createParameters = async (e) => {
-    e.preventDefault();
-    const {age, gender, goal, height, weight} = formData;
-    try {
-        const {data} = await axios.post("/create-parameters", {age,gender,goal,height,weight});
-        if (data.error) {
-         toast.error(data.error)
-        } else {
-          setFormData({});
-          toast.success("Parameters created");
-          navigate("/")
-        }
-    } catch (err) {
-      console.log(err)
-    }
-  }
+
+function ParamForm({createParameters,formData,setFormData}) {
+
   return (
     <div>
       <form onSubmit={createParameters}>
