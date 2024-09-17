@@ -1,26 +1,15 @@
 import React from 'react'
-import { TextField, Button, Box, Typography, Link } from '@mui/material';
+import { CustomBox } from './LoginForm.styled';
+import { TextField, Button, Typography, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 
 
 function LoginForm({loginUser, formData, setFormData}) {
   const navigate = useNavigate();
   return (
-      <Box 
+      <CustomBox 
       component="form" 
       onSubmit={loginUser} 
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        mt: 5,
-        mx: 'auto',
-        width: 300,
-        padding: 3,
-        border: '1px solid #ccc',
-        borderRadius: '8px'
-      }}
     >
       <Typography variant="h5" sx={{ mb: 2 }}>
         Login
@@ -63,7 +52,7 @@ function LoginForm({loginUser, formData, setFormData}) {
           Register
         </Link>
       </Typography>
-    </Box>
+    </CustomBox>
   )
 }
 

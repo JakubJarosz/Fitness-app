@@ -1,7 +1,5 @@
 import './App.css';
-import Navbar
- from './components/navbar/Navbar';
- import { Route, Router, Routes } from 'react-router-dom';
+ import { Route, Routes } from 'react-router-dom';
  import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
@@ -13,7 +11,6 @@ import { fetchUser } from './redux/authSlice';
 import RouteListener from './hooks/RouteListener';
 import CreateParametersPage from "./pages/CreateParametersPage"
 import CreateWorkoutPage from './pages/CreateWorkoutPage';
-
 
 
 axios.defaults.baseURL = "http://localhost:8000";

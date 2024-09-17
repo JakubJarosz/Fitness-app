@@ -3,6 +3,7 @@ import axios from 'axios'
 import ExerciesForm from '../components/create-workout/ExerciesForm'
 import ExerciesList from '../components/create-workout/ExerciesList'
 import ExerciesPopUp from '../components/create-workout/ExerciesPopUp'
+import Navbar from '../components/navbar/Navbar'
 
 function CreateWorkoutPage() {
   const [muscle, setMuscle] = useState("")
@@ -69,6 +70,7 @@ function CreateWorkoutPage() {
  }
   return (
     <div>
+      <Navbar/>
       <ExerciesList
           handleSelectChange={handleSelectChange}
           exData={exData}

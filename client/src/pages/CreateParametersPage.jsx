@@ -3,6 +3,7 @@ import ParamForm from '../components/create-parameters/ParamForm'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import Navbar from '../components/navbar/Navbar'
 
 function CreateParametersPage() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ function CreateParametersPage() {
    }
   return (
     <div>
+      <Navbar/>
       <ParamForm
       createParameters={createParameters}
       formData={formData}

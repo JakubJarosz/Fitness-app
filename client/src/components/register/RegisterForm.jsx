@@ -1,20 +1,65 @@
-import React, {useState} from 'react'
-
+import React from 'react'
+import { CustomBox } from './RegisterForm.styled';
+import { TextField, Button, Typography, Link, Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom'
 
 function RegisterForm({registerUser,formData,setFormData}) {
- 
+ const navigate = useNavigate()
   return (
-    <div>
-      <form onSubmit={registerUser}>
-        <label>Name</label>
-        <input type='text' placeholder='enter name...' value={formData.name} onChange={(e)=> setFormData({...formData, name: e.target.value})}/>
-        <label>Email</label>
-        <input type='email' placeholder='enter email...' value={formData.email} onChange={(e)=> setFormData({...formData, email: e.target.value})}/>
-        <label>Password</label>
-        <input type='password' placeholder='enter password...' value={formData.password} onChange={(e)=> setFormData({...formData, password: e.target.value})}/>
-        <button>Submit</button>
-      </form>
-    </div>
+      <CustomBox
+      component="form" 
+      onSubmit={registerUser} 
+      >
+  <Typography variant="h5" sx={{ mb: 2 }}>
+        Register
+      </Typography>
+      <TextField
+        label="Name"
+        name="name"
+        value={formData.name}
+        onChange={(e)=> setFormData({...formData, name: e.target.value})}
+        fullWidth
+        margin="normal"
+      />
+        <TextField
+        label="Email"
+        name="email"
+        value={formData.email}
+        onChange={(e)=> setFormData({...formData, email: e.target.value})}
+        fullWidth
+        margin="normal"
+      />
+         <TextField
+        label="Password"
+        name="password"
+        type="password"
+        value={formData.password}
+        onChange={(e)=> setFormData({...formData, password: e.target.value})}
+        fullWidth
+        margin="normal"
+      />
+      <Button 
+        type="submit" 
+        variant="contained" 
+        color="primary"
+        fullWidth
+        sx={{ mt: 2 }}
+      >
+        Register
+      </Button>
+      <Typography variant="body2"  sx={{ mt: 2 }}>
+        Alredy have an account?{' '}
+        <Link
+         component="button"
+         variant="body2"
+         onClick={() => {
+           navigate("/login");
+         }}
+        >
+          Login
+        </Link>
+      </Typography>
+      </CustomBox>
   )
 }
 

@@ -31,14 +31,11 @@ function RegisterPage() {
 
   return (
     <div>
-      <h1>Register PAGE</h1>
       <RegisterForm
       registerUser={registerUser}
       formData={formData}
       setFormData={setFormData}
       />
-      <h2>You already have account ?</h2>
-      <button onClick={(() => {navigate("/login")})}>Click here to log in</button>
     </div>
   )
 }
