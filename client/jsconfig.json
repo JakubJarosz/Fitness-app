@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es6",                // Specify ECMAScript version (ES6 or later)
+      "module": "commonjs",            // Use CommonJS module system
+      "jsx": "react",                  // Enable JSX syntax (for React)
+      "baseUrl": "./",                 // Base directory for resolving paths
+      "paths": {
+        "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]  // Use styled-components
+      }
+    },
+    "include": ["src/**/*"],           // Include all files in the src directory
+    "exclude": ["node_modules"]        // Exclude node_modules from the project
+  }

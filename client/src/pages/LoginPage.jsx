@@ -31,14 +31,11 @@ function LoginPage() {
   }
   return (
     <div>
-      <h1>LOGIN PAGE</h1>
       <LoginForm
       loginUser={loginUser}
       formData={formData}
       setFormData={setFormData}
       />
-      <h2>Do you want to create account ?</h2>
-      <button onClick={(() => {navigate("/register")})}>Click here to register</button>
     </div>
   )
 }
