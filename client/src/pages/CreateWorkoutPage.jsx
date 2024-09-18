@@ -4,8 +4,11 @@ import ExerciesForm from '../components/create-workout/ExerciesForm'
 import ExerciesList from '../components/create-workout/ExerciesList'
 import ExerciesPopUp from '../components/create-workout/ExerciesPopUp'
 import Navbar from '../components/navbar/Navbar'
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom'
 
 function CreateWorkoutPage() {
+  const navigate = useNavigate();
   const [muscle, setMuscle] = useState("")
   const [loading, setLoading] =useState(false);
   const [exData, setExdata] = useState([])
@@ -28,11 +31,13 @@ function CreateWorkoutPage() {
     const fetchExercies = async() => {
       setLoading(true)
       try {
-        const response = await axios.get("/api/exercies" , {
-          params: {muscle}
-        })
-        setExdata(response.data)
-        setLoading(false)
+        if (muscle) {
+          const response = await axios.get("/api/exercies" , {
+            params: {muscle}
+          })
+          setExdata(response.data)
+          setLoading(false)
+        }
       } catch (err) {
         console.log(err)
       }
@@ -67,6 +72,8 @@ const hasTasks = Object.values(tasks).some((taskArray) => taskArray.length > 0);
  const postExercise = async() => {
   try {
     await axios.post("/create-exercies", {tasks})
+    navigate("/")
+    toast.success("You sucessfully created your workout")
   } catch (err) {
      console.log(err)
   }
