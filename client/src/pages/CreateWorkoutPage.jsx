@@ -6,6 +6,7 @@ import ExerciesPopUp from '../components/create-workout/ExerciesPopUp'
 import Navbar from '../components/navbar/Navbar'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid';
 
 function CreateWorkoutPage() {
   const navigate = useNavigate();
@@ -35,7 +36,8 @@ function CreateWorkoutPage() {
           const response = await axios.get("/api/exercies" , {
             params: {muscle}
           })
-          setExdata(response.data)
+          const updatedData = response.data.map((el) => ({...el, id: uuidv4()}))
+          setExdata(updatedData)
           setLoading(false)
         }
       } catch (err) {
@@ -64,6 +66,8 @@ function CreateWorkoutPage() {
 
   // filter days that have tasks
   const daysWithTasks = Object.entries(tasks).filter(([day, tasksArray]) => tasksArray.length > 0);
+
+ 
  
 // Check if any day has tasks
 const hasTasks = Object.values(tasks).some((taskArray) => taskArray.length > 0);
