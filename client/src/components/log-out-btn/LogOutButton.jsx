@@ -2,6 +2,8 @@ import React from 'react'
 import toast from 'react-hot-toast';
 import { logoutUser } from '../../redux/authSlice';
 import {useDispatch} from "react-redux"
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Fab } from '@mui/material';
 
 function LogOutButton() {
     const dispatch = useDispatch();
@@ -11,9 +13,18 @@ function LogOutButton() {
         toast.success("Logout was succesfull")
     }
   return (
-    <div>
-      <button onClick={logOutBtn}>Logout</button>
-    </div>
+      <Fab
+      color="primary"
+      aria-label="logout"
+      onClick={logOutBtn}
+      sx={{
+        position: 'fixed',
+        bottom: 16,
+        right: 16,
+      }}
+    >
+      <LogoutIcon />
+    </Fab>
   )
 }
 

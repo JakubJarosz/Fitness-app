@@ -12,8 +12,6 @@ function HomePage() {
     <div>
       <Navbar/>
       <h1>HOME PAGE</h1>
-      <p>Hello {name}</p>
-      <button onClick={(() => navigate("/parameters"))}>create your params</button>
     </div>
   )
 }

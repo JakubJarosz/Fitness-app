@@ -50,7 +50,7 @@ function CreateWorkoutPage() {
   }
 
   const addExerciseBtn = () => {
-    setPopup(false);
+    setPopup(false)
     setTasks({...tasks, [day]: [...tasks[day], selectedExer]})
     setSelectedExer({});
     setDay("")
@@ -60,6 +60,9 @@ function CreateWorkoutPage() {
   // filter days that have tasks
   const daysWithTasks = Object.entries(tasks).filter(([day, tasksArray]) => tasksArray.length > 0);
  
+// Check if any day has tasks
+const hasTasks = Object.values(tasks).some((taskArray) => taskArray.length > 0);
+
  // fetch create exercices from backend and add to database
  const postExercise = async() => {
   try {
@@ -76,12 +79,15 @@ function CreateWorkoutPage() {
           exData={exData}
           selectDayBtn={selectDayBtn}
       />
-      <ExerciesForm
-      daysWithTasks={daysWithTasks}
-      postExercise={postExercise}
-      />
+      {hasTasks && (
+        <ExerciesForm
+        daysWithTasks={daysWithTasks}
+        postExercise={postExercise}
+        />
+      )}
       <ExerciesPopUp
       popup={popup}
+      setPopup={setPopup}
       day={day}
       setDay={setDay}
       addExerciseBtn={addExerciseBtn}
