@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { FormControl, InputLabel, Select, MenuItem, Box, List, ListItem, ListItemText, Button, Typography, Grid, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
 function ExerciesList({handleSelectChange,exData,selectDayBtn}) {
+  
   const [open, setOpen] = useState(false);
   const [instructionText, setInstructionText] = useState("");
 

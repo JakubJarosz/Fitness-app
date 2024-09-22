@@ -11,6 +11,7 @@ import { fetchUser } from './redux/authSlice';
 import RouteListener from './hooks/RouteListener';
 import CreateParametersPage from "./pages/CreateParametersPage"
 import CreateWorkoutPage from './pages/CreateWorkoutPage';
+import EditProfilePage from './pages/EditProfilePage';
 
 
 axios.defaults.baseURL = "http://localhost:8000";
@@ -33,6 +34,7 @@ function App() {
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/parameters' element={<CreateParametersPage/>}/>
       <Route path='/create-plan' element={<CreateWorkoutPage/>}/>
+      <Route path='/editprofile' element={<EditProfilePage/>}/>
      </Routes>
     </div>
   );

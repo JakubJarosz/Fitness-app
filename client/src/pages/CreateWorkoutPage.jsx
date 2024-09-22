@@ -7,8 +7,11 @@ import Navbar from '../components/navbar/Navbar'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from 'react-redux'
 
 function CreateWorkoutPage() {
+  const exercises = useSelector((state) => state.authuser.user.exercies);
+
   const navigate = useNavigate();
   const [muscle, setMuscle] = useState("")
   const [loading, setLoading] =useState(false);
@@ -26,6 +29,7 @@ function CreateWorkoutPage() {
     saturday: [],
     sunday: [],
   });
+  console.log(tasks)
   const [popup, setPopup] = useState(false)
 
   useEffect(() => {
@@ -45,6 +49,7 @@ function CreateWorkoutPage() {
       }
     }
     fetchExercies()
+  
   }, [muscle])
 
   const handleSelectChange = (e) => {
@@ -52,13 +57,16 @@ function CreateWorkoutPage() {
   }
 
   const selectDayBtn = (name, instruction) => {
-    setSelectedExer({...selectedExer, name: name, instruction: instruction})
+    setSelectedExer({...selectedExer, name: name, instruction: instruction, id: uuidv4()})
     setPopup(true)
   }
 
   const addExerciseBtn = () => {
     setPopup(false)
-    setTasks({...tasks, [day]: [...tasks[day], selectedExer]})
+    setTasks((prevTasks) => ({
+      ...prevTasks,
+      [day]: [...(prevTasks[day] || []), selectedExer], // Add new task to the day
+    }));
     setSelectedExer({});
     setDay("")
   }
@@ -92,7 +100,8 @@ const hasTasks = Object.values(tasks).some((taskArray) => taskArray.length > 0);
       />
       {hasTasks && (
         <ExerciesForm
-        daysWithTasks={daysWithTasks}
+        tasks={tasks}
+        setTasks={setTasks}
         postExercise={postExercise}
         />
       )}
