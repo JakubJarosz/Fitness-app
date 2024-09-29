@@ -31,6 +31,10 @@ const activitySchema = new Schema({
     cardioCaloriesBurned: {
         type: Number,
         default: 0
+    },
+    totalCaloriesBurned: {
+        type: Number,
+        default: 0
     }
 })
 

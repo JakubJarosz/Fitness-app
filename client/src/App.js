@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import axios from 'axios';
 import  { Toaster } from 'react-hot-toast';
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux"
+import {useDispatch} from "react-redux"
 import { fetchUser } from './redux/authSlice';
 import RouteListener from './hooks/RouteListener';
 import CreateParametersPage from "./pages/CreateParametersPage"

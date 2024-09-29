@@ -71,6 +71,11 @@ function ParamForm({createParameters,formData,setFormData}) {
           value={formData.weight}
           onChange={(e) => setFormData({ ...formData, weight: e.target.value })}
           required
+          InputProps={{
+            inputProps: {
+              min: 50, // Set minimum value to 0
+            },
+          }}
         />
 
         {/* Submit Button */}

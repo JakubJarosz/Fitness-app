@@ -3,7 +3,7 @@ const router = express.Router();
 const cors = require("cors");
 const {test, registerUser, loginUser, getProfile, logOut} = require("../controllers/authControlles")
 const jwt = require("jsonwebtoken");
-const {createParameters, getExerices, createExercies} = require("../controllers/userData")
+const {createParameters, getExerices, createExercies, getCaloriesBurned, createActivities} = require("../controllers/userData")
 // middleware
 router.use(
     cors({
@@ -38,6 +38,8 @@ router.get("/profile", routAuth, getProfile);
 router.post("/create-parameters",routAuth, createParameters)
 router.get('/api/exercies', routAuth, getExerices);
 router.post('/create-exercies', routAuth, createExercies)
+router.get("/api/cardio", routAuth, getCaloriesBurned);
+router.post("/create-cardio", routAuth, createActivities)
 
 
 module.exports = router
