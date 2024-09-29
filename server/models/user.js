@@ -8,6 +8,32 @@ const tasksItemSchema = new Schema({
     instruction: String
 }, {_id: false});
 
+const activitySchema = new Schema({
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    stepsTaken: {
+        type: Number,
+        default: 0
+    },
+    workoutCompleted: {
+        type: Boolean,
+        default: false
+    },
+    workoutCaloriesBurned: {
+        type: Number,
+        default: 0
+    },
+    cardio: {
+        type: String
+    },
+    cardioCaloriesBurned: {
+        type: Number,
+        default: 0
+    }
+})
+
 const userSchema = new Schema({
     name: String,
     email: {
@@ -46,7 +72,8 @@ const userSchema = new Schema({
         friday: [tasksItemSchema],
         saturday: [tasksItemSchema],
         sunday: [tasksItemSchema],
-    }
+    },
+    activities: [activitySchema]
 })
 
 

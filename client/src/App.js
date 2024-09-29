@@ -12,6 +12,7 @@ import RouteListener from './hooks/RouteListener';
 import CreateParametersPage from "./pages/CreateParametersPage"
 import CreateWorkoutPage from './pages/CreateWorkoutPage';
 import EditProfilePage from './pages/EditProfilePage';
+import CardioPage from './pages/CardioPage';
 
 
 axios.defaults.baseURL = "http://localhost:8000";
@@ -35,6 +36,7 @@ function App() {
       <Route path='/parameters' element={<CreateParametersPage/>}/>
       <Route path='/create-plan' element={<CreateWorkoutPage/>}/>
       <Route path='/editprofile' element={<EditProfilePage/>}/>
+      <Route path='/cardio' element={<CardioPage/>}/>
      </Routes>
     </div>
   );

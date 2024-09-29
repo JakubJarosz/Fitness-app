@@ -43,6 +43,7 @@ const getExerices = async (req, res) => {
   }
 }
 
+
 // CREATE EXERICE DATABASE
 
 const createExercies = async (req,res) => {
@@ -66,12 +67,34 @@ const createExercies = async (req,res) => {
     return res.json({
       error: "Error creating exercise plan"
   })
+  }  
+}
+
+// GET API OF CALORIES BURNED
+
+const getCaloriesBurned = async (req,res) => {
+  const { activity, weight, duration} = req.query
+  try {
+    const response = await axios.get("https://api.api-ninjas.com/v1/caloriesburned" , {
+      params: {activity, weight, duration},
+      headers: {
+          'X-Api-Key': process.env.API_EXERCISE
+        },
+     })
+     res.json(response.data)
+  } catch (err) {
+    res.status(500).json({err: "Something went wrong"})
   }
+}
+
+// CREATE CALORIES BURNED DATABASE
+const createActivities = () => {
   
 }
 
 module.exports = {
     createParameters,
     getExerices,
-    createExercies
+    createExercies,
+    getCaloriesBurned
 }
