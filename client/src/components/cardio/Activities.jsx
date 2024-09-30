@@ -52,7 +52,7 @@ function Activities() {
           const activities = activitiesArray.length > 0 ? activitiesArray[0] : 0;
           setCardioList((prev) => ({
             ...prev,
-            cardioCaloriesBurned: activities
+            cardioCaloriesBurned: activities 
           }));
         } catch (err) {
           console.log(err);
@@ -80,11 +80,10 @@ function Activities() {
     fetchCardio();
   }, [activity, duration, workoutDuration]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = axios.post("/create-cardio");
-      console.log(response);
+      const response = await axios.post("/create-cardio", cardioList);
     } catch (err) {
       console.log(err);
     }

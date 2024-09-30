@@ -89,41 +89,65 @@ const getCaloriesBurned = async (req,res) => {
 
 // CREATE CALORIES BURNED DATABASE
 const createActivities = async (req,res) => {
-  const {activities} = req.body;
+  try {
+    const activities = req.body;
+    const user = await User.findById(req.user.id)
 
-  const calculateTotalCaloriesBurned = (stepsTaken, workoutCaloriesBurned, cardioCaloriesBurned) => {
-    const caloriesPerStep = 0.045; // Average calories burned per step
-    return (stepsTaken * caloriesPerStep) + workoutCaloriesBurned + cardioCaloriesBurned;
-  };
-
-      // Calculate total calories for the new activity data
-      const totalCaloriesBurned = calculateTotalCaloriesBurned(
-        activities.stepsTaken,
-        activities.workoutCaloriesBurned,
-        activities.cardioCaloriesBurned
-      );
-
-  const user = await User.findByIdAndUpdate(req.user.id,
-    {
-      $push: {
-        activities: {
-          date: activities.date,
-          stepsTaken: activities.stepsTaken,
-          workoutCompleted: activities.workoutCompleted,
-          workoutCaloriesBurned: activities.workoutCaloriesBurned,
-          cardio: activities.cardio,
-          cardioCaloriesBurned: activities.cardio,
-          totalCaloriesBurned: totalCaloriesBurned
+ // Calculates steps calories
+    const calculateTotalCaloriesBurned = (stepsTaken, workoutCaloriesBurned, cardioCaloriesBurned) => {
+      const caloriesPerStep = 0.045; 
+      return (stepsTaken * caloriesPerStep) + workoutCaloriesBurned + cardioCaloriesBurned;
+    };
+  
+    // Calculates total calories
+        const totalCaloriesBurned = calculateTotalCaloriesBurned(
+          activities.stepsTaken,
+          activities.workoutCaloriesBurned,
+          activities.cardioCaloriesBurned
+        );
+  
+    // Check if activity with date already exist 
+    const existDate = user.activities.find(activity => 
+      activity.date.toISOString().split('T')[0] === activities.date
+    )
+    
+   if (existDate) {
+    await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        $set: {
+          'activities.$[elem].stepsTaken': existDate.stepsTaken + activities.stepsTaken,
         }
+      },
+      {
+        new: true,
+        arrayFilters: [{'elem.date': activities.date}]
       }
-    },
-    {new: true}
-  );
- if(user) {
-  return res.json({message: "create activities successfull", user})
- } else {
-  return res.json({error: "create activities not successfull"})
- }
+    )
+   }
+
+     await User.findByIdAndUpdate(req.user.id,
+      {
+        $push: {
+          activities: {
+            date: activities.date,
+            stepsTaken: activities.stepsTaken,
+            workoutCompleted: activities.workoutCompleted,
+            workoutCaloriesBurned: activities.workoutCaloriesBurned,
+            cardio: activities.cardio,
+            cardioCaloriesBurned: activities.cardioCaloriesBurned,
+            totalCaloriesBurned: totalCaloriesBurned
+          }
+        }
+      },
+      {new: true}
+    );
+
+   return res.json("Success")
+   
+  } catch (err){
+    return res.json("Fail")
+  }
 }
 
 module.exports = {
