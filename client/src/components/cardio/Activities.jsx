@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import React from 'react';
 import {
   Box,
   Typography,
@@ -18,98 +16,10 @@ import {
 import { DatePicker } from '@mui/x-date-pickers'; 
 import { LocalizationProvider } from '@mui/x-date-pickers'; 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'; 
-import dayjs from 'dayjs'; 
 
-function Activities() {
-  const weight = useSelector((state) => state.authuser.user.parameters.weight);
+
+function Activities({setCardioList, cardioList, setWorkoutDuration, setCardio, cardio,activity, setActivity, activityList, handleCardioSelect,handleDurationSelect, selectedDate,handleDate,handleSubmit}) {
   
- 
-  const [selectedDate, setSelectedDate] = useState(dayjs());
-  
-  const [cardio, setCardio] = useState(false);
-  const [activity, setActivity] = useState('');
-  const [duration, setDuration] = useState(0);
-  const [activityList, setActivityList] = useState([]);
-  const [workoutDuration, setWorkoutDuration] = useState(0);
-  const [cardioList, setCardioList] = useState({
-    date: dayjs().format('YYYY-MM-DD'),
-    stepsTaken: 0,
-    workoutCompleted: false,
-    workoutCaloriesBurned: 0,
-    cardio: "",
-    cardioCaloriesBurned: 0
-  });
-
-  useEffect(() => {
-    const fetchCardio = async () => {
-      if (cardio) {
-        try {
-          const response = await axios.get('/api/cardio', {
-            params: { activity, duration, weight },
-          });
-          setActivityList(response.data);
-          const activitiesArray = response.data.map((el) => el.total_calories);
-          const activities = activitiesArray.length > 0 ? activitiesArray[0] : 0;
-          setCardioList((prev) => ({
-            ...prev,
-            cardioCaloriesBurned: activities 
-          }));
-        } catch (err) {
-          console.log(err);
-        }
-      }
-      if (cardioList.workoutCompleted) {
-        const activity = "Weight lifting, light workout";
-        const duration = workoutDuration;
-        try {
-          const response = await axios.get('/api/cardio', {
-            params: { activity, duration, weight },
-          });
-          const caloriesBurnedArray = response.data.map((el) => el.total_calories);
-          const caloriesBurned = caloriesBurnedArray.length > 0 ? caloriesBurnedArray[0] : 0;
-          setCardioList((prev) => ({
-            ...prev,
-            workoutCaloriesBurned: caloriesBurned
-          }));
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    };
-
-    fetchCardio();
-  }, [activity, duration, workoutDuration]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("/create-cardio", cardioList);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleCardioSelect = (name) => {
-    setActivity(name);
-    setCardioList((prev) => ({
-      ...prev,
-      cardio: name
-    }));
-  };
-
-  const handleDurationSelect = (e) => {
-    setDuration(e);
-  };
-
-  const handleDate = (el) => {
-    setSelectedDate(el)
-    const formatDate = el.format('YYYY-MM-DD')
-    setCardioList((prev) => ({
-      ...prev,
-      date: formatDate
-    }))
-  }
-  console.log(cardioList);
   return (
    
     <LocalizationProvider dateAdapter={AdapterDayjs}>

@@ -7,10 +7,10 @@ import Navbar from '../components/navbar/Navbar'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
-import { useSelector } from 'react-redux'
+
 
 function CreateWorkoutPage() {
-  const exercises = useSelector((state) => state.authuser.user.exercies);
+  
 
   const navigate = useNavigate();
   const [muscle, setMuscle] = useState("")
