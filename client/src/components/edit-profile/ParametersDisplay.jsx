@@ -10,7 +10,7 @@ function ParametersDisplay() {
   const parameters = useSelector((state) => state.authuser.user.parameters);
   // Check if parameters exist
 
-  const hasParameters = parameters && Object.keys(parameters).length > 0;
+  const hasParameters = parameters && Object.keys(parameters).length > 0 && parameters.weight !== 0;
 
   return (
     <Box sx={{ maxWidth: 400, margin: '0 auto', padding: 3 }}>

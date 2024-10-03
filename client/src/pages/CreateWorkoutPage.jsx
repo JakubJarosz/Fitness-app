@@ -4,9 +4,11 @@ import ExerciesForm from '../components/create-workout/ExerciesForm'
 import ExerciesList from '../components/create-workout/ExerciesList'
 import ExerciesPopUp from '../components/create-workout/ExerciesPopUp'
 import Navbar from '../components/navbar/Navbar'
+import LoadingSpin from 'src/components/reusable-components/LoadingSpin'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
+
 
 
 function CreateWorkoutPage() {
@@ -29,12 +31,12 @@ function CreateWorkoutPage() {
     saturday: [],
     sunday: [],
   });
-  console.log(tasks)
+
   const [popup, setPopup] = useState(false)
 
   useEffect(() => {
     const fetchExercies = async() => {
-      setLoading(true)
+     
       try {
         if (muscle) {
           const response = await axios.get("/api/exercies" , {
@@ -112,6 +114,7 @@ const hasTasks = Object.values(tasks).some((taskArray) => taskArray.length > 0);
       setDay={setDay}
       addExerciseBtn={addExerciseBtn}
       />
+      {loading && <LoadingSpin/>}
     </div>
   )
 }

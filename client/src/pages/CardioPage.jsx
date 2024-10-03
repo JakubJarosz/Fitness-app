@@ -11,7 +11,7 @@ function CardioPage() {
   const navigate = useNavigate();
   const weight = useSelector((state) => state.authuser.user.parameters.weight);
   
- 
+  
   const [selectedDate, setSelectedDate] = useState(dayjs());
   
   const [cardio, setCardio] = useState(false);
