@@ -115,7 +115,7 @@ function CardioPage() {
       selectedDate={selectedDate}
       handleDate={handleDate}
       handleSubmit={handleSubmit}
-
+      handleDurationSelect={handleDurationSelect}
       />
     </div>
   )
