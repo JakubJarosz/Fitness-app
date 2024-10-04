@@ -36,7 +36,7 @@ function CreateWorkoutPage() {
 
   useEffect(() => {
     const fetchExercies = async() => {
-     
+      setLoading(true);
       try {
         if (muscle) {
           const response = await axios.get("/api/exercies" , {
@@ -48,6 +48,8 @@ function CreateWorkoutPage() {
         }
       } catch (err) {
         console.log(err)
+      } finally {
+        setLoading(false)
       }
     }
     fetchExercies()
@@ -92,6 +94,8 @@ const hasTasks = Object.values(tasks).some((taskArray) => taskArray.length > 0);
      console.log(err)
   }
  }
+
+ console.log(loading)
   return (
     <div>
       <Navbar/>

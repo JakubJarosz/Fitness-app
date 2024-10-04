@@ -56,6 +56,7 @@ function ExerciesList({handleSelectChange,exData,selectDayBtn}) {
               borderColor: 'divider',
               borderRadius: 1,
               display: 'flex',
+              height: "150px",
               flexDirection: 'column',
               alignItems: 'center', // Center align items horizontally
               mb: 2,

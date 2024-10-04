@@ -57,13 +57,15 @@ const TotalCaloriesBurnedChart = () => {
     };
 
   return (
-    <div style={{ width: '80%', height: '300px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ width: '60%', height: '300px' }}>
       {activities.length > 0 && (
         <>
         <h2>Total Calories Burned Over Time</h2>
         <Line data={chartData} options={options} />
         </>
       )}
+    </div>
     </div>
   )
 }

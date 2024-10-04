@@ -58,7 +58,8 @@ function StepsTakenChart() {
       };
  
   return (
-    <div style={{ width: '80%', height: '300px', marginTop: "80px" }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ width: '60%', height: '300px', marginTop: "80px" }}>
       
       {activities.length > 0 && (
         <>
@@ -66,6 +67,7 @@ function StepsTakenChart() {
         <Bar data={chartData} options={options} />
         </>
       )}
+    </div>
     </div>
   )
 }
