@@ -95,7 +95,6 @@ const hasTasks = Object.values(tasks).some((taskArray) => taskArray.length > 0);
   }
  }
 
- console.log(loading)
   return (
     <div>
       <Navbar/>
