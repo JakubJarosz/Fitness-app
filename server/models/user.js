@@ -26,7 +26,7 @@ const activitySchema = new Schema({
         default: 0
     },
     cardio: {
-        type: String
+        type: Array
     },
     cardioCaloriesBurned: {
         type: Number,

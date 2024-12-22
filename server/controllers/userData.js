@@ -110,8 +110,9 @@ const createActivities = async (req,res) => {
     const existDate = user.activities.find(activity => 
       activity.date.toISOString().split('T')[0] === activities.date
     )
-    
+
    if (existDate) {
+    console.log(existDate.cardio)
     await User.findByIdAndUpdate(
       req.user.id,
       {
@@ -119,11 +120,11 @@ const createActivities = async (req,res) => {
           'activities.$[elem].stepsTaken': Number(existDate.stepsTaken) + Number(activities.stepsTaken),
           'activities.$[elem].workoutCompleted': activities.workoutCompleted,
             'activities.$[elem].workoutCaloriesBurned': activities.workoutCaloriesBurned,
-            'activities.$[elem].cardio': activities.cardio,
-            'activities.$[elem].cardioCaloriesBurned': Numer(existDate.cardioCaloriesBurned) + Number(activities.cardioCaloriesBurned),
+            'activities.$[elem].cardio': activities.cardio, 
+            'activities.$[elem].cardioCaloriesBurned': Number(existDate.cardioCaloriesBurned) + Number(activities.cardioCaloriesBurned),
             'activities.$[elem].totalCaloriesBurned': calculateTotalCaloriesBurned(
               Number(existDate.stepsTaken) + Number(activities.stepsTaken),
-              Numer(existDate.workoutCaloriesBurned) + Number(activities.workoutCaloriesBurned),
+              Number(existDate.workoutCaloriesBurned) + Number(activities.workoutCaloriesBurned),
               Number(existDate.cardioCaloriesBurned) + Number(activities.cardioCaloriesBurned)
             )
         }
