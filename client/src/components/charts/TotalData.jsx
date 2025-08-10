@@ -5,7 +5,7 @@ import { Card, CardContent, Typography, Grid } from '@mui/material';
 function TotalData() {
   const activities = useSelector((state) => state.authuser.user.activities);
 
-  const totalWorkouts = activities.filter((el) => el.workoutCompleted === true).length;
+  const totalWorkouts = activities.filter((el) => el.workoutCompleted === true).length || 0;
   const allStepstaken = activities.map((el) => el.stepsTaken).reduce((acc, curr) => acc + curr, 0);
   const totalCaloriesBurned = activities.map((el) => el.totalCaloriesBurned).reduce((acc, curr) => acc + curr, 0).toFixed(2);
 
