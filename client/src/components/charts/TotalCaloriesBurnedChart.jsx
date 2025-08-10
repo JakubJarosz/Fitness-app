@@ -10,6 +10,7 @@ const TotalCaloriesBurnedChart = () => {
     const labels = activities.map(activity => activity.date.split('T')[0])
     const data = activities.map(activity => activity.totalCaloriesBurned)
 
+
     const chartData = ({
       labels: labels,
       datasets: [
