@@ -15,8 +15,8 @@ mongoose.connect(process.env.MONGO_URL)
 app.use(cors({
   credentials: true,
   origin: [
-    "http://localhost:3000",           // Local frontend
-    process.env.CLIENT_URL             // Render frontend, e.g. https://fitness-app-1-wzc1.onrender.com
+    "http://localhost:3000",          
+    process.env.CLIENT_URL            
   ]
 }));
 
