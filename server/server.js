@@ -11,19 +11,19 @@ mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("Database connected"))
   .catch((err) => console.log("Database not connected", err));
 
-
+// ✅ CORS (must be before routes)
 app.use(cors({
-  credentials: true,
   origin: [
-    "http://localhost:3000",          
-    process.env.CLIENT_URL            
-  ]
+    "http://localhost:3000",                 // dev frontend
+    process.env.CLIENT_URL                    // deployed frontend
+  ],
+  credentials: true                          // allow cookies
 }));
 
 // MIDDLEWARE
 app.use(express.json());
-app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // ROUTES
 app.use("/", require("./routes/authRoutes"));
