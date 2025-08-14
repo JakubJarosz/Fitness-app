@@ -8,7 +8,7 @@ const {createParameters, getExerices, createExercies, getCaloriesBurned, createA
 router.use(
     cors({
         credentials: true,
-        origin: "http://localhost:3000"
+        origin: ["http://localhost:3000", "https://fitness-app-1-wzc1.onrender.com"]
     })
 )
 //auth routs 
