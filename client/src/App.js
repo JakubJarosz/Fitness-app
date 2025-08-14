@@ -16,7 +16,7 @@ import EditProfilePage from "./pages/EditProfilePage";
 import CardioPage from "./pages/CardioPage";
 import LoadingSpin from "./components/reusable-components/LoadingSpin";
 
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = process.env.REACT_APP_API_UR
 axios.defaults.withCredentials = true;
 
 function App() {
