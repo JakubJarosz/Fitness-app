@@ -4,13 +4,7 @@ const cors = require("cors");
 const {test, registerUser, loginUser, getProfile, logOut} = require("../controllers/authControlles")
 const jwt = require("jsonwebtoken");
 const {createParameters, getExerices, createExercies, getCaloriesBurned, createActivities} = require("../controllers/userData")
-// middleware
-router.use(
-    cors({
-        credentials: true,
-        origin: ["http://localhost:3000", process.env.CLIENT_URL]
-    })
-)
+
 //auth routs 
 const routAuth = (req,res,next) => {
     const {token} =  req.cookies
