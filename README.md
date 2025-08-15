@@ -95,12 +95,12 @@ npm start
 
 ## 📸 Screenshots
 ![Register](client/screenshots/register.PNG)
-![Login](client/screenshots/login.png)
-![MainPage](client/screenshots/mainpage.png)
-![CreateParameters](client/screenshots/createparameters.png)
-![CreateWorkout](client/screenshots/createworkout.png)
-![TrackCalories](client/screenshots/trackcalories.png)
-![Profile](client/screenshots/profile.png)
+![Login](client/screenshots/login.PNG)
+![MainPage](client/screenshots/mainpage.PNG)
+![CreateParameters](client/screenshots/createparameters.PNG)
+![CreateWorkout](client/screenshots/createworkout.PNG)
+![TrackCalories](client/screenshots/trackcalories.PNG)
+![Profile](client/screenshots/profile.PNG)
 
 ---
 
