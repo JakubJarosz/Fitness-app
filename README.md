@@ -94,7 +94,7 @@ npm start
 ---
 
 ## 📸 Screenshots
-![Register](client/screenshots/register.png)
+![Register](client/screenshots/register.Png)
 ![Login](client/screenshots/login.png)
 ![MainPage](client/screenshots/mainpage.png)
 ![CreateParameters](client/screenshots/createparameters.png)
