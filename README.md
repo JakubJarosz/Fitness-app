@@ -1,4 +1,4 @@
-🏋️‍♂️ Fitness App
+# 🏋️‍♂️ Fitness App
 
 A full-stack MERN fitness tracking application where users can set their fitness goals, track workouts, monitor daily cardio, and view progress statistics through interactive charts.
 
